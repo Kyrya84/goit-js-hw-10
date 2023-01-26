@@ -11,7 +11,8 @@ const DEBOUNCE_DELAY = 300;
 input.addEventListener(
   'input',
   debounce(event => {
-      const trimmedValue = input.value.trim();
+    const trimmedValue = input.value.trim();
+    cleanHtml();
           
     if (trimmedValue !== '') {
         fetchCountries(trimmedValue).then(foundData => {      
@@ -66,3 +67,7 @@ function renderOneCountry(countries) {
       countryList.innerHTML = markup;
 }
 
+function cleanHtml() {
+  countryList.innerHTML = '';
+  countryInfo.innerHTML = '';
+}
